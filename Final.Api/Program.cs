@@ -19,5 +19,4 @@ if (app.Environment.IsDevelopment())
 app.UseCors(ApiConfiguration.CorsPolicyName);
 app.MapEnpoints();
 
-
 app.Run();

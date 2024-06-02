@@ -39,13 +39,14 @@ public static class BuildExtension
             options => options.AddPolicy(
                 ApiConfiguration.CorsPolicyName,
                 policy => policy
-                .WithOrigins([
-                Configuration.BackEndUrl,
-                Configuration.FrontEndUrl
-                ])
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials()));
+                    .WithOrigins([
+                        Configuration.BackEndUrl,
+                        Configuration.FrontEndUrl
+                    ])
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+            ));
     }
 
     public static void AddSercives(this WebApplicationBuilder builder)

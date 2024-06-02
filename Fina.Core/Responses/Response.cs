@@ -4,20 +4,25 @@ namespace Fina.Core.Responses;
 
 public class Response<TData>
 {
-    private readonly int _code = Configuration.DefaultStatusCode;
-    public string? Message { get; set; }
-    public TData? Data { get; set; }
+    private int _code = Configuration.DefaultStatusCode;
 
     [JsonConstructor]
-    public Response() => _code = Configuration.DefaultStatusCode;
+    public Response()
+        => _code = Configuration.DefaultStatusCode;
 
-    public Response(TData? data, int code = Configuration.DefaultStatusCode, string? message = null)
+    public Response(
+        TData? data,
+        int code = Configuration.DefaultStatusCode,
+        string? message = null)
     {
         Data = data;
-        Message = message;
         _code = code;
+        Message = message;
     }
 
+    public TData? Data { get; set; }
+    public string? Message { get; set; }
+
     [JsonIgnore]
-    public bool IsSuccess => _code >= 200 && _code <= 299; 
+    public bool IsSuccess => _code is >= 200 and <= 299;
 }

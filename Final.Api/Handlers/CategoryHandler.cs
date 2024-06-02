@@ -11,7 +11,7 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
 {
     public async Task<Response<Category?>> CreateAsync(CreateCategoryRequest request)
     {
-
+        await Task.Delay(5000);
         var category = new Category()
         {
             UserId = request.UserId,
@@ -64,7 +64,7 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
             var query = context
                 .Categories
                 .AsNoTracking()
-                .Where(x => x.UserId == request.UserId)
+                //.Where(x => x.UserId == request.UserId)
                 .OrderBy(x => x.Title);
 
             var categories = await query
